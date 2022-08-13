@@ -6,6 +6,7 @@ using ExpectedObjects;
 using TDDxUnit.Domain.Entities;
 using TDDxUnit.Domain.Enum;
 using TDDxUnit.Tests.Builders;
+using TDDxUnit.Tests.Utils;
 
 namespace TDDxUnit.Tests.CourseTest
 {
@@ -20,10 +21,16 @@ namespace TDDxUnit.Tests.CourseTest
             courseExpected.ToExpectedObject().ShouldMatch(course);
         }
 
-        [Fact(DisplayName = "Should throw exception when name is null or empty")]
+        [Theory]
         [InlineData("")]
         [InlineData(null)]
         public void MustNotHaveInvalidNameEmptyOrNull(string name)
-            => Assert.Throws<ArgumentException>(() => CourseBuilder.New().WithName(name).Build());
+                => Assert.Throws<ArgumentException>(() => CourseBuilder.New().WithName(name).Build()).WithMessage("Name is required");
+
+        [Theory]
+        [InlineData(0)]
+        [InlineData(-1)]
+        public void MustNotHaveWorkloadLessThanZero(double workload)
+            => Assert.Throws<ArgumentException>(() => CourseBuilder.New().WithWorkload(workload).Build()).WithMessage("Workload must be greater than zero");
     }
 }

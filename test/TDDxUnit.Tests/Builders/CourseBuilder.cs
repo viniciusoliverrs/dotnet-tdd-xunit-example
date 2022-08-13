@@ -12,7 +12,7 @@ namespace TDDxUnit.Tests.Builders
         private Guid _id = Guid.NewGuid();
         private string _name = "Name";
         private string _description = "Description";
-        private int _workload = 100;
+        private double _workload = 100;
         private double _price = 100;
         private TargetAudienceEnum _targetAudience = TargetAudienceEnum.Developers;
 
@@ -37,7 +37,7 @@ namespace TDDxUnit.Tests.Builders
             return this;
         }
 
-        public CourseBuilder WithWorkload(int workload)
+        public CourseBuilder WithWorkload(double workload)
         {
             _workload = workload;
             return this;
