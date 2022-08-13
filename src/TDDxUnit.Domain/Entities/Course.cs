@@ -22,6 +22,9 @@ namespace TDDxUnit.Domain.Entities
 
             if(workload <= 0)
                 throw new ArgumentException("Workload must be greater than zero");
+
+            if(price <= 0)
+                throw new ArgumentException("Price must be greater than zero");
                 
             Id = id;
             Name = name;

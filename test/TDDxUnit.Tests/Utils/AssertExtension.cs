@@ -10,7 +10,7 @@ namespace TDDxUnit.Tests.Utils
         public static void WithMessage(this ArgumentException exception, string message)
         {
             if(exception.Message == message) Assert.True(true);
-            else Assert.False(true);
+            else Assert.False(true, $"Expected: {message}, Actual: {exception.Message}");
         }
     }
 }
