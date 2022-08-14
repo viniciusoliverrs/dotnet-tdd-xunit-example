@@ -8,5 +8,6 @@ namespace TDDxUnit.Domain.Data.Repositories
 {
     public interface ICourseRepository : IRepository<Course>
     {
+        Task<Course> GetByName(string name);
     }
 }

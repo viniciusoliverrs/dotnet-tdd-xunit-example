@@ -33,5 +33,10 @@ namespace TDDxUnit.Data.Repositories
         {
             throw new NotImplementedException();
         }
+
+        public Task<Course> GetByName(string name)
+        {
+            throw new NotImplementedException();
+        }
     }
 }
