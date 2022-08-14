@@ -25,7 +25,7 @@ namespace TDDxUnit.Tests.CourseTest
         }
 
         [Fact]
-       public void ShouldAddACourse()
+        public void ShouldAddACourse()
         {
             var course = new CourseVM
             {
@@ -37,7 +37,16 @@ namespace TDDxUnit.Tests.CourseTest
                 Workload = _faker.Random.Int(1, 100)
             };
             _controller.Add(course);
-            _mockRepository.Verify(x => x.Add(It.IsAny<Course>()), Times.Once); //verifica se o metodo Add foi chamado uma vez
+            _mockRepository
+                .Verify(x => 
+                    x.Add(It.Is<Course>(c => 
+                    c.Name == course.Name && 
+                    c.Price == course.Price &&
+                    c.Description == course.Description &&
+                    c.TargetAudience == course.TargetAudience &&
+                    c.Workload == course.Workload
+                    )), 
+                Times.Once); //verifica se o metodo Add foi chamado uma vez
         }
     }
 }

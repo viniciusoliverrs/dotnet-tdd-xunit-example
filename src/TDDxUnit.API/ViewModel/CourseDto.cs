@@ -14,6 +14,6 @@ namespace TDDxUnit.API.ViewModel
         public double Workload { get;  set; }
         public double Price { get;  set; }
         public TargetAudienceEnum TargetAudience { get;  set; }
-
+        
     }
 }
